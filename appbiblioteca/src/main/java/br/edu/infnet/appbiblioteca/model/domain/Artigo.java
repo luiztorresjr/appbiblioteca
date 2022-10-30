@@ -1,14 +1,16 @@
 package br.edu.infnet.appbiblioteca.model.domain;
 
+
 import java.util.Date;
 import java.util.List;
 
 public class Artigo extends Obra{
 	private String assunto;
 	private String local;
-	private String Subtitulo;
+	private String subtitulo;
 	private List<String> autores;
 	private Date dataPublicacao;
+
 	public String getAssunto() {
 		return assunto;
 	}
@@ -34,15 +36,16 @@ public class Artigo extends Obra{
 		this.dataPublicacao = dataPublicacao;
 	}
 	
+	public String getSubtitulo() {
+		return subtitulo;
+	}
+	public void setSubtitulo(String _subtitulo) {
+		subtitulo = _subtitulo;
+	}
+	
 	@Override
 	public String toString() {
 		// TODO Auto-generated method stub
-		return super.toString()+";"+assunto+";"+local+";"+autores+";"+dataPublicacao;
-	}
-	public String getSubtitulo() {
-		return Subtitulo;
-	}
-	public void setSubtitulo(String subtitulo) {
-		Subtitulo = subtitulo;
+		return super.toString()+";"+subtitulo+";"+assunto+";"+local+";"+autores+";"+dataPublicacao;
 	}
 }

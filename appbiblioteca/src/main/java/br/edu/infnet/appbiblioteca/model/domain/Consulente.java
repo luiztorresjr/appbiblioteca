@@ -6,7 +6,7 @@ public class Consulente {
 	private String nome;
 	private int registro;
 	private Date dataNascimento;
-	private int rg;
+	private String rg;
 	private String telefone;
 	private String endereco;
 	public String getNome() {
@@ -27,10 +27,10 @@ public class Consulente {
 	public void setDataNascimento(Date dataNascimento) {
 		this.dataNascimento = dataNascimento;
 	}
-	public int getRg() {
+	public String getRg() {
 		return rg;
 	}
-	public void setRg(int rg) {
+	public void setRg(String rg) {
 		this.rg = rg;
 	}
 	public String getTelefone() {
