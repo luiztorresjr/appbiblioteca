@@ -1,27 +1,30 @@
 package br.edu.infnet.appbiblioteca.model.teste;
 
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.ApplicationArguments;
 import org.springframework.boot.ApplicationRunner;
+import org.springframework.core.annotation.Order;
 import org.springframework.stereotype.Component;
 
-import br.edu.infnet.appbiblioteca.controller.LivroController;
 import br.edu.infnet.appbiblioteca.model.domain.Livro;
-
+import br.edu.infnet.appbiblioteca.model.service.LivroService;
+@Order(4)
 @Component
 public class LivroTeste implements ApplicationRunner{
 
+	@Autowired
+	private LivroService livroService;
 
-	@SuppressWarnings("deprecation")
+
 	@Override
 	public void run(ApplicationArguments args) throws Exception {
 		System.out.println("Cadastramento de Livro");
 		
 		Livro a = new Livro();
-		a.setId(1);
+		a.setRegistro(11);
 		a.setTitulo("Senhor dos Aneis");
 		a.setNumeroDePaginas(1200);
 		a.setIdioma("Portugues");
@@ -35,14 +38,14 @@ public class LivroTeste implements ApplicationRunner{
 		autor.add("J.R.R. Tolkien");
 		a.setAutores(autor);
 		a.setVolume(1);
-		a.setDataLancamento(new Date("2001/01/01"));
+		a.setDataLancamento("2001/01/01");
 		a.setEditora("Martins Fontes");
 		a.setValor(94.41f);
-		LivroController.incluir(a);
+		livroService.incluir(a);
 		
 		Livro b = new Livro();
-		b.setId(2);
 		b.setTitulo("A Clockwork Orange");
+		b.setRegistro(12);
 		b.setNumeroDePaginas(240);
 		b.setIdioma("Ingles");
 		b.setIsbn("0393341763");
@@ -55,13 +58,13 @@ public class LivroTeste implements ApplicationRunner{
 		autorB.add("Anthony Burgess");
 		b.setAutores(autorB);
 		b.setVolume(1);
-		b.setDataLancamento(new Date("2019/04/21"));
+		b.setDataLancamento("2019/04/21");
 		b.setEditora("W. W. Norton & Company");
 		b.setValor(44.79f);
-		LivroController.incluir(b);
+		livroService.incluir(b);
 		
 		Livro c = new Livro();
-		c.setId(3);
+		c.setRegistro(13);
 		c.setTitulo("Hackers");
 		c.setNumeroDePaginas(474);
 		c.setIdioma("Espanhol");
@@ -74,10 +77,10 @@ public class LivroTeste implements ApplicationRunner{
 		autorC.add("Juan Andres Maíllo Fernández");
 		c.setAutores(autor);
 		c.setVolume(1);
-		c.setDataLancamento(new Date("2020/09/03"));
+		c.setDataLancamento("2020/09/03");
 		c.setEditora("RA-MA S.A. Editorial y Publicaciones");		
 		c.setValor(316.51f);
-		LivroController.incluir(c);
+		livroService.incluir(c);
 	}
 	
 }

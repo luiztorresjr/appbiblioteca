@@ -1,11 +1,13 @@
 package br.edu.infnet.appbiblioteca.model.domain;
 
 import java.util.Date;
-import java.util.List;
+import javax.persistence.Entity;
+import javax.persistence.Table;
 
+@Entity
+@Table(name = "tperiodico")
 public class Periodico extends Obra{
 	private int numeroEdicao;
-	private List<String> redatores;
 	private String editora;
 	private int periodicidade;
 	private float valor;
@@ -27,25 +29,22 @@ public class Periodico extends Obra{
 	@Override
 	public String toString() {
 		// TODO Auto-generated method stub
-		return super.toString()+";"+numeroEdicao+";"+periodicidade+";"+valor+";"+redatores;
+		return super.toString()+";"+numeroEdicao+";"+periodicidade+";"+valor;
 	}
 	public Date getDataPublicacao() {
 		return dataPublicacao;
 	}
-	public void setDataPublicacao(Date dataPublicacao) {
-		this.dataPublicacao = dataPublicacao;
+	
+	@SuppressWarnings("deprecation")
+	public void setDataPublicacao(String dataPublicacao) {
+		Date dataInterna = new Date(dataPublicacao.replace("-", "/"));
+		this.dataPublicacao = dataInterna;
 	}
 	public String getEditora() {
 		return editora;
 	}
 	public void setEditora(String editora) {
 		this.editora = editora;
-	}
-	public List<String> getRedatores() {
-		return redatores;
-	}
-	public void setRedatores(List<String> _redatores) {
-		redatores = _redatores;
 	}
 	public int getPeriodicidade() {
 		return periodicidade;

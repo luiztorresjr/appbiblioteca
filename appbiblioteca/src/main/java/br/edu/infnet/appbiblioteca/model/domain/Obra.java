@@ -3,67 +3,94 @@ package br.edu.infnet.appbiblioteca.model.domain;
 
 import java.util.List;
 
-public class Obra {
+import javax.persistence.Column;
+import javax.persistence.ElementCollection;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Inheritance;
+import javax.persistence.InheritanceType;
+import javax.persistence.Table;
+
+@Entity
+@Table(name="tobra")
+@Inheritance(strategy = InheritanceType.JOINED)
+public abstract class Obra {
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
+	private int registro;
 	private String titulo;
 	private int numeroDePaginas;
+	  @ElementCollection 
+	  @Column(name = "genero") 
 	private List<String> genero;
-	private String idioma;
-	
+	  @ElementCollection 
+	  @Column(name = "autor") 
+	private List<String> autores;
+	private String idioma;	
 	
 	public int getId() {
 		return id;
 	}
 
-
 	public void setId(int id) {
 		this.id = id;
 	}
-
 
 	public String getTitulo() {
 		return titulo;
 	}
 
-
 	public void setTitulo(String titulo) {
 		this.titulo = titulo;
 	}
-
 
 	public int getNumeroDePaginas() {
 		return numeroDePaginas;
 	}
 
-
 	public void setNumeroDePaginas(int numeroDePaginas) {
 		this.numeroDePaginas = numeroDePaginas;
 	}
-
 
 	public List<String> getGenero() {
 		return genero;
 	}
 
-
 	public void setGenero(List<String> genero) {
 		this.genero = genero;
 	}
-
 
 	public String getIdioma() {
 		return idioma;
 	}
 
-
 	public void setIdioma(String idioma) {
 		this.idioma = idioma;
 	}
+	public List<String> getAutores() {
+		return autores;
+	}
 
+	public void setAutores(List<String> autores) {
+		this.autores = autores;
+	}
+
+	public int getRegistro() {
+		return registro;
+	}
+
+	public void setRegistro(int registro) {
+		this.registro = registro;
+	}
 
 	@Override
 	public String toString() {
 		// TODO Auto-generated method stub
-		return id+";"+titulo+";"+numeroDePaginas+";"+genero+";"+idioma;
+		return id+";"+titulo+";"+numeroDePaginas+";"+registro+";"+genero+";"+idioma;
 	}
+
+	
 }

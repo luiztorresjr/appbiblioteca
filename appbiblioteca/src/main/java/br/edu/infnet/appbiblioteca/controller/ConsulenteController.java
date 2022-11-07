@@ -1,46 +1,46 @@
 package br.edu.infnet.appbiblioteca.controller;
 
-import java.util.Collection;
-import java.util.HashMap;
-import java.util.Map;
-
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.SessionAttribute;
 
 import br.edu.infnet.appbiblioteca.model.domain.Consulente;
+import br.edu.infnet.appbiblioteca.model.domain.Usuario;
+import br.edu.infnet.appbiblioteca.model.service.ConsulenteService;
 
 
 
 @Controller
 public class ConsulenteController {
 	
-	private static Map<Integer, Consulente> mapa = new HashMap<Integer, Consulente>();
-	private static Integer id = 1;
-	
-	public static void incluir(Consulente consulente) {
-		consulente.setRegistro(id++);
-		mapa.put(consulente.getRegistro(), consulente);
-	}
-	
-	public static Collection<Consulente> obterLista(){
-		return mapa.values();
-	}
-	
-	public static void excluir(Integer id) {
-		mapa.remove(id);
-	}
+	@Autowired
+	private ConsulenteService consulenteService;	
 	
 	@GetMapping(value="/consulente/{id}/excluir")
-	public String exclusao(@PathVariable Integer id) {
-		excluir(id);
+	public String excluir(@PathVariable Integer id) {
+		consulenteService.excluir(id);
 		return "redirect:/consulente/lista";
 	}
 	
 	@GetMapping(value="/consulente/lista")
 	public String telaLista(Model model) {
-		model.addAttribute("listagem", obterLista());
+		model.addAttribute("listagem", consulenteService.obterLista());
 		return "consulente/lista";
+	}
+	
+	@GetMapping(value="/consulente")
+	public String telaCadastro() {
+		return "consulente/cadastro";
+	}
+	
+	@PostMapping(value="/consulente/incluir")
+	public String incluir(Consulente consulente, @SessionAttribute("user") Usuario usuario) {
+		consulente.setUsuario(usuario);
+		consulenteService.incluir(consulente);
+		return "redirect:/consulente/lista";
 	}
 }

@@ -4,33 +4,40 @@
 <html>
 <head>
 <meta charset="ISO-8859-1">
-	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
 <title>Cadastramento de Consulentes</title>
 </head>
 <body>
+<c:import url="/WEB-INF/jsp/menu.jsp"/>
+
 	<div class="container mt-3">
 	<h3>Consulentes: ${listagem.size()}</h3>
+	
+	<h4><a href="/consulente">Novo Consulente</a></h4>
+	
 		<table class="table table-striped">
 			<thead>
 				<tr>
-				<th>Registro</th>
+				<th>ID</th>
 				<th>Nome</th>
 				<th>Data de nascimento</th>
 				<th>RG</th>
 				<th>Telefone</th>
+				<th>Email</th>
 				<th>Endereco</th>
 				</tr>
 			</thead>
 			<tbody>
 			<c:forEach var="a" items="${listagem}">
 				<tr>
-					<td> ${a.registro } </td>
+					<td> ${a.id } </td>
 					<td>${a.nome }</td>
 					<td>${a.dataNascimento }</td>
 					<td>${a.rg }</td>
 					<td>${a.telefone }</td>
+					<td>${a.email }</td>
 					<td>${a.endereco }</td>
-					<td><a href="/consulente/${a.registro}/excluir">excluir</a></td>
+					<td><a href="/consulente/${a.id}/excluir">excluir</a></td>
 				</tr>
 			</c:forEach>			
 			</tbody>

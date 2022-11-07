@@ -2,13 +2,15 @@ package br.edu.infnet.appbiblioteca.model.domain;
 
 
 import java.util.Date;
-import java.util.List;
+import javax.persistence.Entity;
+import javax.persistence.Table;
 
+@Entity
+@Table(name = "tartigo")
 public class Artigo extends Obra{
 	private String assunto;
 	private String local;
-	private String subtitulo;
-	private List<String> autores;
+	private String subtitulo;	
 	private Date dataPublicacao;
 
 	public String getAssunto() {
@@ -23,17 +25,13 @@ public class Artigo extends Obra{
 	public void setLocal(String local) {
 		this.local = local;
 	}
-	public List<String> getAutores() {
-		return autores;
-	}
-	public void setAutores(List<String> autores) {
-		this.autores = autores;
-	}
 	public Date getDataPublicacao() {
 		return dataPublicacao;
 	}
-	public void setDataPublicacao(Date dataPublicacao) {
-		this.dataPublicacao = dataPublicacao;
+	@SuppressWarnings("deprecation")
+	public void setDataPublicacao(String dataPublicacao) {
+		Date dataInterna = new Date(dataPublicacao.replace("-", "/"));
+		this.dataPublicacao = dataInterna;
 	}
 	
 	public String getSubtitulo() {
@@ -46,6 +44,6 @@ public class Artigo extends Obra{
 	@Override
 	public String toString() {
 		// TODO Auto-generated method stub
-		return super.toString()+";"+subtitulo+";"+assunto+";"+local+";"+autores+";"+dataPublicacao;
+		return super.toString()+";"+subtitulo+";"+assunto+";"+local+";"+getAutores()+";"+dataPublicacao;
 	}
 }
