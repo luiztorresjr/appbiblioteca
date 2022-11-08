@@ -5,6 +5,9 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+
+import br.edu.infnet.appbiblioteca.model.domain.Livro;
 import br.edu.infnet.appbiblioteca.model.service.LivroService;
 
 @Controller
@@ -23,5 +26,16 @@ public class LivroController {
 	public String telaLista(Model model) {
 		model.addAttribute("listagem", livroService.obterLista());
 		return "livro/lista";
+	}
+	
+	@GetMapping(value="/livro")
+	public String telaCadastro() {
+		return "livro/cadastro";
+	}
+	
+	@PostMapping(value="/livro/incluir")
+	public String incluir(Livro livro) {
+		livroService.incluir(livro);
+		return "redirect:/livro/lista";
 	}
 }

@@ -10,40 +10,43 @@
 <body>
 <c:import url="/WEB-INF/jsp/menu.jsp"/>
 <div class="container mt-3">
-  <h3>Artigos: ${listagem.size()}</h3>
-		<table class="table table-striped">
-			<thead>
-				<tr>
-				<th>Id</th>
-				<th>Titulo</th>
-				<th>Subtitulo</th>
-				<th>Assunto</th>
-				<th>Numero de paginas</th>
-				<th>Local</th>
-				<th>Data de Publicacao</th>
-				<th>Autores</th>
-				<th>Generos</th>
-				<th>Idioma</th>
-				</tr>
-			</thead>
-			<tbody>
-				<c:forEach var="a" items="${listagem}">
-				<tr>
-					<td>${a.id }</td>
-					<td>${a.titulo }</td>
-					<td>${a.subtitulo}</td>
-					<td>${a.assunto}</td>
-					<td>${a.numeroDePaginas}</td>
-					<td>${a.local}</td>
-					<td>${a.dataPublicacao}</td>
-					<td>${a.autores}</td>
-					<td>${a.genero}</td>
-					<td>${a.idioma}</td>
-					<td><a href="/artigo/${a.id}/excluir">excluir</a></td>
-				</tr>
-				</c:forEach>
-			</tbody>
-		</table>
+	
+	<h4><a href="/artigo">Novo Artigo</a></h4>
+	
+	  <h3>Artigos: ${listagem.size()}</h3>
+			<table class="table table-striped">
+				<thead>
+					<tr>
+					<th>Id</th>
+					<th>Titulo</th>
+					<th>Subtitulo</th>
+					<th>Assunto</th>
+					<th>Numero de paginas</th>
+					<th>Local</th>
+					<th>Data de Publicacao</th>
+					<th>Autores</th>
+					<th>Generos</th>
+					<th>Idioma</th>
+					</tr>
+				</thead>
+				<tbody>
+					<c:forEach var="a" items="${listagem}">
+					<tr>
+						<td>${a.id }</td>
+						<td>${a.titulo }</td>
+						<td>${a.subtitulo}</td>
+						<td>${a.assunto}</td>
+						<td>${a.numeroDePaginas}</td>
+						<td>${a.local}</td>
+						<td>${a.dataPublicacao}</td>
+						<td>${a.autores}</td>
+						<td>${a.genero}</td>
+						<td>${a.idioma}</td>
+						<td><a href="/artigo/${a.id}/excluir">excluir</a></td>
+					</tr>
+					</c:forEach>
+				</tbody>
+			</table>
 	</div>
 </body>
 </html>

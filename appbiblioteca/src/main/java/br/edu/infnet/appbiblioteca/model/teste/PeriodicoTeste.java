@@ -31,6 +31,9 @@ public class PeriodicoTeste implements ApplicationRunner{
 		a.setIdioma("Portugues");
 		a.setEditora("Abril");
 		List<String> redatores = new ArrayList<String>();
+		List<String> generos = new ArrayList<String>();
+		generos.add("Entreterimento");
+		generos.add("Automotivo");
 		redatores.add("Paulo Campo Grande");
 		a.setAutores(redatores);
 		a.setValor(14.9f);

@@ -12,6 +12,7 @@ import br.edu.infnet.appbiblioteca.model.service.EmprestimoService;
 
 @Controller
 public class EmprestimoController {
+	
 	@Autowired
 	private EmprestimoService emprestimoService;
 		
@@ -29,10 +30,13 @@ public class EmprestimoController {
 	
 	@PostMapping(value = "/emprestimo/incluir")
 	public String incluir(Emprestimo emprestimo) {
-		
 		emprestimoService.incluir(emprestimo);
-		
 		return "redirect:/emprestimo/lista";
+	}
+	
+	@GetMapping(value="/emprestimo")
+	public String telaCadastro() {
+		return "emprestimo/cadastro";
 	}
 	
 }

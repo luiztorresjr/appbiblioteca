@@ -1,6 +1,7 @@
 package br.edu.infnet.appbiblioteca.model.domain;
 
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.Column;
@@ -60,7 +61,20 @@ public abstract class Obra {
 	}
 
 	public void setGenero(List<String> genero) {
+		System.out.println(genero);
 		this.genero = genero;
+	}
+	
+	public void setGenero(String genero) {
+		System.out.println(genero);
+		List<String> generos = new ArrayList<String>();
+		for (String g : genero.split("\n")) {
+			generos.add(g);
+		};
+		for (String g : genero.split(",")) {
+			generos.add(g);
+		};
+		this.genero = generos;
 	}
 
 	public String getIdioma() {
@@ -75,6 +89,14 @@ public abstract class Obra {
 	}
 
 	public void setAutores(List<String> autores) {
+		this.autores = autores;
+	}
+	
+	public void setAutores(String autor) {
+		List<String> autores = new ArrayList<String>();
+		for(String a : autor.split("\n")) {
+			autores.add(a);
+		};
 		this.autores = autores;
 	}
 
