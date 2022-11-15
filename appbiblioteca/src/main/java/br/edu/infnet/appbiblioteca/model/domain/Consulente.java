@@ -87,5 +87,10 @@ public class Consulente {
 		this.endereco = endereco;
 	}
 	
+	@Override
+	public String toString() {
+		// TODO Auto-generated method stub
+		return id+";"+nome+";"+rg+";"+telefone+";"+email+";"+usuario+";"+endereco;
+	}
 	
 }
