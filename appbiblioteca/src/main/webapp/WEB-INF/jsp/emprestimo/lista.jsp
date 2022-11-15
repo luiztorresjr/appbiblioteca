@@ -10,6 +10,9 @@
 <body>
 <c:import url="/WEB-INF/jsp/menu.jsp"/>
 <div class="container mt-3">
+
+<h4><a href="/emprestimo">Novo Emprestimo</a></h4>
+
 <h3>Emprestimos: ${listagem.size()}</h3>
 		<table class="table table-striped">
 			<thead>
@@ -26,7 +29,7 @@
 				<c:forEach var="c" items="${listagem}">
 				<tr>
 					<td>${c.id }</td>
-					<td>${c.consulente }</td>
+					<td>${c.consulente.nome }</td>
 					<td>${c.dataRetirada}</td>
 					<td>${c.dataDevolucao}</td>
 					<td>${c.atrasado}</td>

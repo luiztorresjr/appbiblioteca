@@ -10,6 +10,7 @@ import org.springframework.core.annotation.Order;
 import org.springframework.stereotype.Component;
 
 import br.edu.infnet.appbiblioteca.model.domain.Livro;
+import br.edu.infnet.appbiblioteca.model.domain.Usuario;
 import br.edu.infnet.appbiblioteca.model.service.LivroService;
 @Order(4)
 @Component
@@ -23,8 +24,13 @@ public class LivroTeste implements ApplicationRunner{
 	public void run(ApplicationArguments args) throws Exception {
 		System.out.println("Cadastramento de Livro");
 		
+		Usuario usuario = new Usuario();
+		usuario.setId(1);
+		
+		
 		Livro a = new Livro();
 		a.setRegistro(11);
+		a.setUsuario(usuario);
 		a.setTitulo("Senhor dos Aneis");
 		a.setNumeroDePaginas(1200);
 		a.setIdioma("Portugues");
@@ -44,6 +50,7 @@ public class LivroTeste implements ApplicationRunner{
 		livroService.incluir(a);
 		
 		Livro b = new Livro();
+		b.setUsuario(usuario);
 		b.setTitulo("A Clockwork Orange");
 		b.setRegistro(12);
 		b.setNumeroDePaginas(240);
@@ -64,6 +71,7 @@ public class LivroTeste implements ApplicationRunner{
 		livroService.incluir(b);
 		
 		Livro c = new Livro();
+		c.setUsuario(usuario);
 		c.setRegistro(13);
 		c.setTitulo("Hackers");
 		c.setNumeroDePaginas(474);

@@ -6,6 +6,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.SessionAttribute;
 
 import br.edu.infnet.appbiblioteca.model.domain.Consulente;
@@ -27,8 +28,8 @@ public class ConsulenteController {
 	}
 	
 	@GetMapping(value="/consulente/lista")
-	public String telaLista(Model model) {
-		model.addAttribute("listagem", consulenteService.obterLista());
+	public String telaLista(Model model, @SessionAttribute("user") Usuario usuario) {
+		model.addAttribute("listagem", consulenteService.obterLista(usuario));
 		return "consulente/lista";
 	}
 	
@@ -43,4 +44,13 @@ public class ConsulenteController {
 		consulenteService.incluir(consulente);
 		return "redirect:/consulente/lista";
 	}
+	
+	@PostMapping(value = "/consulente/cep")
+	public String obterCep(Model model, @RequestParam String cep){
+		
+		model.addAttribute("endereco", consulenteService.obterCep(cep));
+		
+		return "consulente/cadastro";
+	}
+	
 }

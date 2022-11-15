@@ -12,9 +12,8 @@
 
 <div class="container mt-3">
 
-	<h4><a href="/obra">Nova Obra</a></h4>
-
 	<h3>Obras: ${listagem.size()}</h3>
+	
 			<table class="table table-striped">
 				<thead>
 					<tr>

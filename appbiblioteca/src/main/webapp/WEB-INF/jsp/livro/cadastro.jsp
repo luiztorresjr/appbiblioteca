@@ -15,18 +15,9 @@
 		<h2>Artigo:</h2>
 		
 		<form action="/livro/incluir" method="post">
-			<div class="form-group">
-				<label>Registro:</label>
-				<input type="number" min="0" step="1" class="form-control" placeholder="Entre com o Registro" name="registro">
-			</div>
-			<div class="form-group">
-				<label>Titulo:</label>
-				<input type="text" class="form-control" placeholder="Entre com o Titulo" name="titulo">
-			</div>
-			<div class="form-group">
-				<label>Numero de paginas:</label>
-				<input type="number" min="0" step="1" class="form-control" placeholder="Entre com o Titulo" name="numeroDePaginas">
-			</div>
+			
+			<c:import url="/WEB-INF/jsp/obra.jsp"/>
+			
 			<div class="form-group">
 				<label>Data de lançamento:</label>
 				<input type="date" class="form-control" placeholder="Entre com o sua data de lançamento" name="dataLancamento">
@@ -40,21 +31,14 @@
 				<input type="text" class="form-control" placeholder="Entre com a editora" name="editora">
 			</div>
 			<div class="form-group">
-				<label>Volume:</label>
+				<label>Preço:</label>
 				<input type="number" class="form-control"  placeholder="Entre com o preço do Livro" name="valor">
 			</div>
 			<div class="form-group">
 				<label>ISBN:</label>
 				<input type="text" class="form-control" placeholder="Entre com o ISBM" name="isbn">
-			</div>
-			<div class="form-group">
-				<label>Generos:(Coloque uma virgula entre cada genero)</label>
-				<textarea class="form-control" id="exampleFormControlTextarea1" rows="3" name="genero"></textarea>
-			</div>
-			<div class="form-group">
-				<label>Autores:(Coloque uma virgula entre cada autor)</label>
-				<textarea class="form-control" id="exampleFormControlTextarea1" rows="3" name="autor"></textarea>
-			</div>
+			</div>		
+			
 			<button type="submit" class="btn btn-defaul">Cadastrar</button>
 		</form>
 	</div>

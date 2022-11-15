@@ -15,8 +15,9 @@ import br.edu.infnet.appbiblioteca.model.domain.Emprestimo;
 import br.edu.infnet.appbiblioteca.model.domain.Livro;
 import br.edu.infnet.appbiblioteca.model.domain.Obra;
 import br.edu.infnet.appbiblioteca.model.domain.Periodico;
+import br.edu.infnet.appbiblioteca.model.domain.Usuario;
 import br.edu.infnet.appbiblioteca.model.service.EmprestimoService;
-@Order(2)
+@Order(7)
 @Component
 public class EmprestimoTeste implements ApplicationRunner{
 	
@@ -27,19 +28,25 @@ public class EmprestimoTeste implements ApplicationRunner{
 	public void run(ApplicationArguments args) throws Exception {
 		System.out.println("Cadastramento de Emprestimo");
 		
+		Usuario usuario = new Usuario();
+		usuario.setId(1);
+		
 		// TODO Auto-generated method stub
 		Emprestimo a = new Emprestimo();
 		Consulente consulenteA = new Consulente();
+		consulenteA.setId(1);
 		consulenteA.setNome("Airton");
-		consulenteA.setDataNascimento("1965/05/09");
-		consulenteA.setEndereco("Rua das conchas, 67");
 		consulenteA.setRg("2256790062");
 		consulenteA.setTelefone("11990076230");
 		a.setConsulente(consulenteA);
 		a.setDataDevolucao("2022/11/10");
 		a.setDataRetirada("2022/10/20");
+		
+		a.setUsuario(usuario);
+		
 		Artigo obraA = new Artigo();
-		obraA.setId(1);
+		obraA.setId(7);
+		obraA.setRegistro(10);
 		obraA.setTitulo("Avaliação de usabilidade do sistema Trilhas Literárias de Hortolândia");
 		obraA.setSubtitulo("");
 		obraA.setDataPublicacao("2020/01/04");
@@ -49,6 +56,7 @@ public class EmprestimoTeste implements ApplicationRunner{
 		autoresA.add("André C da Silva");
 		obraA.setAutores(autoresA);
 		obraA.setAssunto("Avalicao de interface");
+		obraA.setIdioma("Portugues");
 		obraA.setNumeroDePaginas(20);
 		List<String> generosA = new ArrayList<String>();
 		generosA.add("UI");
@@ -62,9 +70,8 @@ public class EmprestimoTeste implements ApplicationRunner{
 		
 		Emprestimo b = new Emprestimo();
 		Consulente consulenteB = new Consulente();
+		consulenteB.setId(2);
 		consulenteB.setNome("Carmen");
-		consulenteB.setDataNascimento("1989/12/01");
-		consulenteB.setEndereco("Avenida Brasil, 19");
 		consulenteB.setRg("1234567890");
 		consulenteB.setTelefone("21986432000");
 		b.setConsulente(consulenteB);
@@ -72,6 +79,8 @@ public class EmprestimoTeste implements ApplicationRunner{
 		b.setDataRetirada("2022/09/20");
 		Periodico obraB = new Periodico();
 		obraB.setTitulo("Le monde");
+		obraB.setId(12);
+		obraB.setRegistro(20);
 		obraB.setDataPublicacao("2022/10/29");
 		obraB.setIdioma("Frances");
 		obraB.setPeriodicidade(1);
@@ -90,21 +99,22 @@ public class EmprestimoTeste implements ApplicationRunner{
 		obrasB.add(obraB);
 		b.setObras(obrasB);
 		b.setAtrasado(true);
+		b.setUsuario(usuario);
 		emprestimoService.incluir(b);
 		
 		
 		Emprestimo c = new Emprestimo();
 		Consulente consulenteC = new Consulente();
+		consulenteC.setId(3);
 		consulenteC.setNome("Jordan");
-		consulenteC.setDataNascimento("1999/08/30");
-		consulenteC.setEndereco("Rua das conchas, 67");
 		consulenteC.setRg("8763410093");
 		consulenteC.setTelefone("31964006776");
 		c.setConsulente(consulenteC);
 		c.setDataDevolucao("2022/11/10");
 		c.setDataRetirada("2022/10/20");
 		Livro obraC = new Livro();
-		obraC.setId(1);
+		obraC.setId(4);
+		obraB.setRegistro(30);
 		obraC.setTitulo("Senhor dos Aneis");
 		obraC.setNumeroDePaginas(1200);
 		obraC.setIsbn("8533613407");
@@ -123,6 +133,7 @@ public class EmprestimoTeste implements ApplicationRunner{
 		obrasC.add(obraC);
 		c.setObras(obrasC);
 		c.setAtrasado(false);
+		c.setUsuario(usuario);
 		emprestimoService.incluir(c);
 		
 	}

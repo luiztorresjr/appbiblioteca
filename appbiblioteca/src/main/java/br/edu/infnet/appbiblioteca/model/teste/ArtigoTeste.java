@@ -10,6 +10,7 @@ import org.springframework.core.annotation.Order;
 import org.springframework.stereotype.Component;
 
 import br.edu.infnet.appbiblioteca.model.domain.Artigo;
+import br.edu.infnet.appbiblioteca.model.domain.Usuario;
 import br.edu.infnet.appbiblioteca.model.service.ArtigoService;
 @Order(5)
 @Component
@@ -19,6 +20,10 @@ public class ArtigoTeste implements ApplicationRunner {
 	private ArtigoService artigoService;
 	@Override
 	public void run(ApplicationArguments args) throws Exception {
+		
+		Usuario usuario = new Usuario();
+		usuario.setId(1);
+		
 		// TODO Auto-generated method stub
 		System.out.println("Cadastramento de Artigo");
 		Artigo a = new Artigo();
@@ -29,6 +34,7 @@ public class ArtigoTeste implements ApplicationRunner {
 		a.setLocal("IFSP campus Hortolândia SP");
 		List<String> autoresA = new ArrayList<String>();
 		autoresA.add("Luiz T. Junior");
+		a.setUsuario(usuario);
 		autoresA.add("André C da Silva");
 		a.setAutores(autoresA);
 		a.setAssunto("Avalicao de interface");
@@ -51,6 +57,7 @@ public class ArtigoTeste implements ApplicationRunner {
 		autoresB.add("Taran Grant");
 		b.setAutores(autoresB);
 		b.setAssunto("Genética");
+		b.setUsuario(usuario);
 		b.setNumeroDePaginas(1);
 		List<String> generosB = new ArrayList<String>();
 		generosB.add("Biologia");
@@ -70,6 +77,7 @@ public class ArtigoTeste implements ApplicationRunner {
 		autoresC.add("Rejane Magalhães");
 		autoresC.add("Bernardino, L. Schulz");
 		c.setAutores(autoresC);
+		c.setUsuario(usuario);
 		c.setAssunto("Avalicao de interface");
 		c.setNumeroDePaginas(20);
 		c.setIdioma("Portugues");

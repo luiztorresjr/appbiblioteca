@@ -1,5 +1,8 @@
 package br.edu.infnet.appbiblioteca.controller;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -16,6 +19,7 @@ public class ObraController {
 	
 	@Autowired
 	private ObraService obraService;
+	private static List<String> autores = new ArrayList<String>();
 	
 	@GetMapping(value="/obra/{id}/excluir")
 	public String exclusao(@PathVariable Integer id) {
@@ -38,5 +42,18 @@ public class ObraController {
 	public String incluir(Obra obra) {
 		obraService.incluir(obra);
 		return "redirect:/obra/lista";
+	}
+	
+	@PostMapping(value="/obra/autor")
+	public void alterarAutor(Model model, String valor){
+		String autor = model.getAttribute("autor").toString();
+		Integer escolha = Integer.parseInt(valor);
+		if(escolha == 1) {
+			autores.add(autor);
+		}else {
+			autores.remove(autor);
+		}
+		model.addAttribute("autores", autores);
+		
 	}
 }

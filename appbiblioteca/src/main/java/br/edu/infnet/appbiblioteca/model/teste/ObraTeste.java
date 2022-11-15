@@ -12,9 +12,10 @@ import org.springframework.stereotype.Component;
 import br.edu.infnet.appbiblioteca.model.domain.Artigo;
 import br.edu.infnet.appbiblioteca.model.domain.Livro;
 import br.edu.infnet.appbiblioteca.model.domain.Periodico;
+import br.edu.infnet.appbiblioteca.model.domain.Usuario;
 import br.edu.infnet.appbiblioteca.model.service.ObraService;
 
-@Order(4)
+@Order(3)
 @Component
 public class ObraTeste implements ApplicationRunner{
 
@@ -22,6 +23,10 @@ public class ObraTeste implements ApplicationRunner{
 	private ObraService obraService;
 	@Override
 	public void run(ApplicationArguments args) throws Exception {
+		
+		Usuario usuario = new Usuario();
+		usuario.setId(1);
+		
 		// TODO Auto-generated method stub
 		System.out.println("Cadastramento de Obra");
 		Livro a = new Livro();
@@ -30,6 +35,7 @@ public class ObraTeste implements ApplicationRunner{
 		a.setNumeroDePaginas(300);
 		a.setIdioma("Portugues");
 		a.setIsbn("8595084742");
+		a.setUsuario(usuario);
 		List<String> generos = new ArrayList<String>();
 		generos.add("Literatura");
 		generos.add("Ficção");
@@ -51,6 +57,7 @@ public class ObraTeste implements ApplicationRunner{
 		b.setSubtitulo("Preá, cutia e Mocô");
 		b.setDataPublicacao("2022/10/27");
 		b.setLocal("USP");
+		b.setUsuario(usuario);
 		List<String> autoresB = new ArrayList<String>();
 		autoresB.add("Marcelo J. P. Pinheiro");
 		autoresB.add("Silvana A. Andrade");
@@ -68,6 +75,7 @@ public class ObraTeste implements ApplicationRunner{
 		c.setRegistro(30);
 		c.setTitulo("New York Times");
 		c.setDataPublicacao("2022/11/06");
+		c.setUsuario(usuario);
 		c.setIdioma("Ingles");
 		c.setPeriodicidade(1);
 		List<String> generosC = new ArrayList<String>();

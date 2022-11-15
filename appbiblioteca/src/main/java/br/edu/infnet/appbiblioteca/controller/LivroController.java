@@ -12,6 +12,7 @@ import br.edu.infnet.appbiblioteca.model.service.LivroService;
 
 @Controller
 public class LivroController {
+	
 	@Autowired
 	private LivroService livroService;	
 	

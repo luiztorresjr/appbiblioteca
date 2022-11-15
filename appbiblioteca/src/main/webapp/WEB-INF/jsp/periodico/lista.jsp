@@ -20,6 +20,7 @@
 				<thead>
 					<tr>
 					<th>Id</th>
+					<th>Registro</th>
 					<th>Titulo</th>
 					<th>Numero de paginas</th>
 					<th>Generos</th>
@@ -36,6 +37,7 @@
 					<c:forEach var="c" items="${listagem}">
 					<tr>
 						<td>${c.id }</td>
+						<td>${c.registro }</td>
 						<td>${c.titulo }</td>
 						<td>${c.numeroDePaginas}</td>
 						<td>${c.genero}</td>

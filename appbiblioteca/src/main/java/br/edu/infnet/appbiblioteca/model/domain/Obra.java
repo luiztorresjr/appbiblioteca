@@ -3,7 +3,6 @@ package br.edu.infnet.appbiblioteca.model.domain;
 
 import java.util.ArrayList;
 import java.util.List;
-
 import javax.persistence.Column;
 import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
@@ -12,6 +11,9 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -24,13 +26,18 @@ public abstract class Obra {
 	private int registro;
 	private String titulo;
 	private int numeroDePaginas;
+	private String idioma;	
 	  @ElementCollection 
 	  @Column(name = "genero") 
 	private List<String> genero;
 	  @ElementCollection 
 	  @Column(name = "autor") 
 	private List<String> autores;
-	private String idioma;	
+	@ManyToMany(mappedBy = "obras")
+	private List<Emprestimo> emprestimo;
+	@ManyToOne
+	@JoinColumn(name = "idUsuario")
+	private Usuario usuario;
 	
 	public int getId() {
 		return id;
@@ -61,16 +68,11 @@ public abstract class Obra {
 	}
 
 	public void setGenero(List<String> genero) {
-		System.out.println(genero);
 		this.genero = genero;
 	}
 	
 	public void setGenero(String genero) {
-		System.out.println(genero);
 		List<String> generos = new ArrayList<String>();
-		for (String g : genero.split("\n")) {
-			generos.add(g);
-		};
 		for (String g : genero.split(",")) {
 			generos.add(g);
 		};
@@ -94,11 +96,12 @@ public abstract class Obra {
 	
 	public void setAutores(String autor) {
 		List<String> autores = new ArrayList<String>();
-		for(String a : autor.split("\n")) {
-			autores.add(a);
+		for (String g : autor.split(",")) {
+			autores.add(g);
 		};
-		this.autores = autores;
+		this.genero = autores;
 	}
+	
 
 	public int getRegistro() {
 		return registro;
@@ -106,6 +109,24 @@ public abstract class Obra {
 
 	public void setRegistro(int registro) {
 		this.registro = registro;
+	}
+	
+	
+
+	public List<Emprestimo> getEmprestimo() {
+		return emprestimo;
+	}
+
+	public void setEmprestimo(List<Emprestimo> emprestimo) {
+		this.emprestimo = emprestimo;
+	}
+
+	public Usuario getUsuario() {
+		return usuario;
+	}
+
+	public void setUsuario(Usuario usuario) {
+		this.usuario = usuario;
 	}
 
 	@Override

@@ -6,10 +6,8 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.SessionAttribute;
 
 import br.edu.infnet.appbiblioteca.model.domain.Artigo;
-import br.edu.infnet.appbiblioteca.model.domain.Usuario;
 import br.edu.infnet.appbiblioteca.model.service.ArtigoService;
 
 
@@ -38,8 +36,8 @@ public class ArtigoController {
 	}
 	
 	@PostMapping(value="/artigo/incluir")
-	public String incluir(Artigo artigo, @SessionAttribute("user") Usuario usuario) {
+	public String incluir(Artigo artigo) {
 		artigoService.incluir(artigo);
-		return "redirect:/consulente/lista";
+		return "redirect:/artigo/lista";
 	}
 }

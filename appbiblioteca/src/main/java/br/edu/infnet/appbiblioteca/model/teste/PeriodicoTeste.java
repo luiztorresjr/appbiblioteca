@@ -10,8 +10,9 @@ import org.springframework.core.annotation.Order;
 import org.springframework.stereotype.Component;
 
 import br.edu.infnet.appbiblioteca.model.domain.Periodico;
+import br.edu.infnet.appbiblioteca.model.domain.Usuario;
 import br.edu.infnet.appbiblioteca.model.service.PeriodicoService;
-@Order(7)
+@Order(6)
 @Component
 public class PeriodicoTeste implements ApplicationRunner{
 
@@ -20,8 +21,14 @@ public class PeriodicoTeste implements ApplicationRunner{
 	@Override
 	public void run(ApplicationArguments args) throws Exception {
 		// TODO Auto-generated method stub
+		
+		Usuario usuario = new Usuario();
+		usuario.setId(1);
+		
+		
 		System.out.println("Cadastramento de Periodico");
 		Periodico a = new Periodico();
+		a.setUsuario(usuario);
 		a.setRegistro(31);
 		a.setTitulo("Quatro Rodas");
 		a.setNumeroDePaginas(134);
@@ -35,11 +42,13 @@ public class PeriodicoTeste implements ApplicationRunner{
 		generos.add("Entreterimento");
 		generos.add("Automotivo");
 		redatores.add("Paulo Campo Grande");
+		a.setGenero(generos);
 		a.setAutores(redatores);
 		a.setValor(14.9f);
 		periodicoService.incluir(a);
 		
 		Periodico b = new Periodico();
+		b.setUsuario(usuario);
 		b.setRegistro(32);
 		b.setTitulo("Jornal Folha de São Paulo");
 		b.setNumeroDePaginas(134);
@@ -59,6 +68,7 @@ public class PeriodicoTeste implements ApplicationRunner{
 		periodicoService.incluir(b);
 		
 		Periodico c = new Periodico();
+		c.setUsuario(usuario);
 		c.setRegistro(33);
 		c.setTitulo("Le monde");
 		c.setDataPublicacao("2022/10/29");

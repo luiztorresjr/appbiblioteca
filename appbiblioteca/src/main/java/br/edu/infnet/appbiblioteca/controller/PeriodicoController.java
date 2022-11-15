@@ -39,6 +39,6 @@ public class PeriodicoController {
 	@PostMapping(value="/periodico/incluir")
 	public String incluir(Periodico periodico) {
 		periodicoService.incluir(periodico);
-		return "redirect:/usuario/lista";
+		return "redirect:/periodico/lista";
 	}
 }

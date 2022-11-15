@@ -20,7 +20,6 @@
 				<tr>
 				<th>ID</th>
 				<th>Nome</th>
-				<th>Data de nascimento</th>
 				<th>RG</th>
 				<th>Telefone</th>
 				<th>Email</th>
@@ -32,11 +31,10 @@
 				<tr>
 					<td> ${a.id } </td>
 					<td>${a.nome }</td>
-					<td>${a.dataNascimento }</td>
 					<td>${a.rg }</td>
 					<td>${a.telefone }</td>
 					<td>${a.email }</td>
-					<td>${a.endereco }</td>
+					<td>${a.endereco.logradouro }</td>
 					<td><a href="/consulente/${a.id}/excluir">excluir</a></td>
 				</tr>
 			</c:forEach>			

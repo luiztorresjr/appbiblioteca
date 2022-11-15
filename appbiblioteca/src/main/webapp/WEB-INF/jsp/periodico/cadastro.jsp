@@ -15,45 +15,28 @@
 		<h2>Periodico:</h2>
 		
 		<form action="/periodico/incluir" method="post">
-			<div class="form-group">
-				<label>Registro:</label>
-				<input type="number" min="0" step="1" class="form-control" placeholder="Entre com o Registro" name="registro">
-			</div>
-			<div class="form-group">
-				<label>Titulo:</label>
-				<input type="text" class="form-control" placeholder="Entre com o Titulo" name="titulo">
-			</div>
-			<div class="form-group">
-				<label>Numero de paginas:</label>
-				<input type="number" min="0" step="1" class="form-control" placeholder="Entre com o Titulo" name="numeroDePaginas">
-			</div>
-			<div class="form-group">
-				<label>Autores:(Dê enter entre cada autor)</label>
-				<textarea class="form-control" id="exampleFormControlTextarea1" rows="3" name="autores"></textarea>
-			</div>
-			<div class="form-group">
-				<label>Genero:(Dê enter entre cada genero)</label>
-				<textarea class="form-control" id="exampleFormControlTextarea1" rows="3" name="genero"></textarea>
-			</div>
+		
+		<c:import url="/WEB-INF/jsp/obra.jsp"/>
+			
 			<div class="form-group">
 				<label>Numero da edição:</label>
-				<input type="number" min="0" step="1" class="form-control" placeholder="Entre com o Titulo" name="numeroDePaginas">
+				<input type="number" min="0" step="1" class="form-control" placeholder="Entre com o numero da edicao" name="numeroEdicao">
 			</div>
 			<div class="form-group">
 				<label>Editora:</label>
-				<input type="text"  class="form-control" placeholder="Entre com o Titulo" name="numeroDePaginas">
+				<input type="text"  class="form-control" placeholder="Entre com o Titulo" name="editora">
 			</div>
 			<div class="form-group">
 				<label>Periodicidade:</label>
-				<input type="number" min="1" step="1" class="form-control" placeholder="Entre com o Titulo" name="numeroDePaginas">
+				<input type="number" min="1" step="1" class="form-control" placeholder="Entre com o Periocidade" name="periodicidade">
 			</div>
 			<div class="form-group">
 				<label>Preço:</label>
-				<input type="number"  class="form-control" placeholder="Entre com o Titulo" name="numeroDePaginas">
+				<input type="number"  class="form-control" placeholder="Entre com o valor" name="valor">
 			</div>
 			<div class="form-group">
 				<label>Data da publicação:</label>
-				<input type="date"  class="form-control" placeholder="Entre com o Titulo" name="numeroDePaginas">
+				<input type="date"  class="form-control" placeholder="Entre com de publicacao" name="dataPublicacao">
 			</div>
 			<button type="submit" class="btn btn-defaul">Cadastrar</button>
 		</form>

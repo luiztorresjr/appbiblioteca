@@ -14,14 +14,21 @@
 	<div class="container mt-3">
 		<h2>Consulente:</h2>
 		
+		<form action="/consulente/cep" class="form-inline" method="post">
+		
+		    <div class="form-group">
+		      <label>CEP:</label>
+		      <input type="text" class="form-control" placeholder="Entre com o seu CEP" name="cep">
+		    </div>
+	
+		    <button type="submit" class="btn btn-default">Buscar</button>
+		</form>
+		
+	
 		<form action="/consulente/incluir" method="post">
 			<div class="form-group">
 				<label>Nome:</label>
 				<input type="text" class="form-control" placeholder="Entre com o seu nome" name="nome">
-			</div>
-			<div class="form-group">
-				<label>Data de nascimento:</label>
-				<input type="date" class="form-control" placeholder="Entre com o sua data de nascimento" name="dataNascimento">
 			</div>
 			<div class="form-group">
 				<label>RG:</label>
@@ -35,10 +42,9 @@
 				<label>Email:</label>
 				<input type="email" class="form-control" placeholder="Entre com o seu email" name="email">
 			</div>
-			<div class="form-group">
-				<label>Endereco:</label>
-				<input type="text" class="form-control" placeholder="Entre com o seu endereço" name="endereco">
-			</div>
+			
+			<c:import url="/WEB-INF/jsp/endereco.jsp"/>
+			
 			<button type="submit" class="btn btn-defaul">Cadastrar</button>
 		</form>
 	</div>

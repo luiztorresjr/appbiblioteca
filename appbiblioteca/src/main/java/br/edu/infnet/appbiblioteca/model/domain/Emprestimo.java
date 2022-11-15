@@ -1,14 +1,19 @@
 package br.edu.infnet.appbiblioteca.model.domain;
 
+import java.time.Instant;
 import java.util.Date;
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
-import javax.persistence.Transient;
 
 @Entity
 @Table(name="temprestimo")
@@ -19,10 +24,27 @@ public class Emprestimo {
 	private Date dataRetirada;
 	private Date dataDevolucao;
 	private boolean atrasado;
-	@Transient
+	@OneToOne(cascade = CascadeType.DETACH) 
+	@JoinColumn(name = "idConsulente")
 	private Consulente consulente;
-	@Transient
+	@ManyToMany(cascade = CascadeType.DETACH)
 	private List<Obra> obras;
+	@ManyToOne
+	@JoinColumn(name = "idUsuario")
+	private Usuario usuario;
+	
+	@SuppressWarnings("deprecation")
+	public Emprestimo() {
+		dataRetirada = Date.from(Instant.now());
+		dataDevolucao =  new Date (dataRetirada.getYear(), dataRetirada.getMonth(), dataRetirada.getDay()+7);
+		atrasado = false;
+	}
+	
+	public Emprestimo(Consulente consulente) {
+		this();
+		this.consulente = consulente;
+	}
+	
 	
 	public int getId() {
 		return id;
@@ -52,8 +74,14 @@ public class Emprestimo {
 	}
 	public void setAtrasado(boolean atrasado) {
 		this.atrasado = atrasado;
-	}
+	}	
 	
+	public Usuario getUsuario() {
+		return usuario;
+	}
+	public void setUsuario(Usuario usuario) {
+		this.usuario = usuario;
+	}
 	
 	public Consulente getConsulente() {
 		return consulente;
