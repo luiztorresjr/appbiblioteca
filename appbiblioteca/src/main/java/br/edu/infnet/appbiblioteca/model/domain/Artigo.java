@@ -44,6 +44,6 @@ public class Artigo extends Obra{
 	@Override
 	public String toString() {
 		// TODO Auto-generated method stub
-		return super.toString()+";"+subtitulo+";"+assunto+";"+local+";"+getAutores()+";"+dataPublicacao;
+		return super.toString()+";"+subtitulo+";"+assunto+";"+local+";"+dataPublicacao;
 	}
 }
