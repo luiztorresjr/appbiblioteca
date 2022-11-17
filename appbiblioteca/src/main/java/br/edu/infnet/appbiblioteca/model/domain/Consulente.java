@@ -92,4 +92,5 @@ public class Consulente {
 		// TODO Auto-generated method stub
 		return id+";"+nome+";"+rg+";"+telefone+";"+email+";"+usuario+";"+endereco;
 	}
+	
 }

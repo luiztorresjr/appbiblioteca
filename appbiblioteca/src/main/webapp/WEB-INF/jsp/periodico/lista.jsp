@@ -1,24 +1,28 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+	pageEncoding="ISO-8859-1"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="ISO-8859-1">
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
 <title>Cadastramento de Periodicos</title>
 </head>
 <body>
-<c:import url="/WEB-INF/jsp/menu.jsp"/>
+	<c:import url="/WEB-INF/jsp/menu.jsp" />
 
 
 
-<div class="container mt-3">
-	<h4><a href="/periodico">Novo Periodico</a></h4>
-	
-	<h3>Periodicos: ${listagem.size()}</h3>
-			<table class="table table-striped">
-				<thead>
-					<tr>
+	<div class="container mt-3">
+		<h4>
+			<a href="/periodico">Novo Periodico</a>
+		</h4>
+
+		<h3>Periodicos: ${listagem.size()}</h3>
+		<table class="table table-striped">
+			<thead>
+				<tr>
 					<th>Id</th>
 					<th>Registro</th>
 					<th>Titulo</th>
@@ -31,10 +35,10 @@
 					<th>Periodicidade</th>
 					<th>Valor</th>
 					<th>Data de publicacao</th>
-					</tr>
-				</thead>
-				<tbody>
-					<c:forEach var="c" items="${listagem}">
+				</tr>
+			</thead>
+			<tbody>
+				<c:forEach var="c" items="${listagem}">
 					<tr>
 						<td>${c.id }</td>
 						<td>${c.registro }</td>
@@ -50,9 +54,9 @@
 						<td>${c.dataPublicacao}</td>
 						<td><a href="/periodico/${c.id}/excluir">excluir</a></td>
 					</tr>
-					</c:forEach>
-				</tbody>
-			</table>
+				</c:forEach>
+			</tbody>
+		</table>
 	</div>
 </body>
 </html>
