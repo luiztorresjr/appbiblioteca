@@ -29,7 +29,7 @@ public class Periodico extends Obra{
 	@Override
 	public String toString() {
 		// TODO Auto-generated method stub
-		return super.toString()+";"+numeroEdicao+";"+periodicidade+";"+valor;
+		return super.toString()+";"+numeroEdicao+";"+periodicidade+";"+valor+";"+dataPublicacao+";"+editora;
 	}
 	public Date getDataPublicacao() {
 		return dataPublicacao;

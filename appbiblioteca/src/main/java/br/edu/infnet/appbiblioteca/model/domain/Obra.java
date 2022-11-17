@@ -3,6 +3,8 @@ package br.edu.infnet.appbiblioteca.model.domain;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
@@ -33,7 +35,7 @@ public abstract class Obra {
 	  @ElementCollection 
 	  @Column(name = "autor") 
 	private List<String> autores;
-	@ManyToMany(mappedBy = "obras")
+	@ManyToMany(cascade = CascadeType.REMOVE, mappedBy = "obras")
 	private List<Emprestimo> emprestimo;
 	@ManyToOne
 	@JoinColumn(name = "idUsuario")

@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
@@ -35,7 +36,8 @@ public class LivroController {
 	}
 	
 	@PostMapping(value="/livro/incluir")
-	public String incluir(Livro livro) {
+	public String incluir(@ModelAttribute Livro livro) {
+		System.out.println(livro.getAutores());
 		livroService.incluir(livro);
 		return "redirect:/livro/lista";
 	}

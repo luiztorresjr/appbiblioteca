@@ -39,7 +39,7 @@
 				<input type="text" class="form-control" placeholder="Entre com o ISBM" name="isbn">
 			</div>		
 			
-			<button type="submit" class="btn btn-defaul">Cadastrar</button>
+			<button type="submit" class="btn btn-defaul" >Cadastrar</button>
 		</form>
 	</div>
 </body>

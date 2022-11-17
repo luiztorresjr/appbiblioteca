@@ -36,7 +36,7 @@
 				<label>Assunto principal:</label>
 				<input type="text" class="form-control" placeholder="Entre com o local Assunto" name="assunto">
 			</div>
-			<button type="submit" class="btn btn-defaul">Cadastrar</button>
+			<button type="submit" class="btn btn-defaul" >Cadastrar</button>
 		</form>
 	</div>
 </body>

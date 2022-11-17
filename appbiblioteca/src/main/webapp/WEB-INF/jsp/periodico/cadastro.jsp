@@ -38,7 +38,7 @@
 				<label>Data da publicação:</label>
 				<input type="date"  class="form-control" placeholder="Entre com de publicacao" name="dataPublicacao">
 			</div>
-			<button type="submit" class="btn btn-defaul">Cadastrar</button>
+			<button type="submit" class="btn btn-defaul" >Cadastrar</button>
 		</form>
 		</div>
 </body>

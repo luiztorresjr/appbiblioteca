@@ -61,5 +61,9 @@ public class Endereco {
 		this.uf = uf;
 	}
 	
-	
+	@Override
+	public String toString() {
+		// TODO Auto-generated method stub
+		return id+";"+cep+";"+logradouro+";"+complemento+";"+bairro+";"+localidade+";"+uf;
+	}
 }
